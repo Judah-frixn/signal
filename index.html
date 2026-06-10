@@ -1,0 +1,1064 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Signal — India Business Intel</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,700&family=Inter:wght@400;500;600;700&display=swap');
+  
+  :root {
+    --theme-color: #1a1a1e;
+    --theme-color-rgb: 26, 26, 30;
+    --bg-paper: #fbf9f6; /* Warm editorial paper background */
+    --bg-card: #ffffff;
+    --ink-primary: #121214;
+    --ink-secondary: #5a5a62;
+    --border-color: #e3e0d8;
+    --border-dark: #b8b5ac;
+    --transition: all 0.25s ease-out;
+  }
+
+  /* Elegant Editorial Dark Mode */
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --theme-color: #f2ede4;
+      --theme-color-rgb: 242, 237, 228;
+      --bg-paper: #0f1012; /* Ink-black paper background */
+      --bg-card: #15171a;
+      --ink-primary: #f2ede4; /* Warm ivory text */
+      --ink-secondary: #908e89;
+      --border-color: #242629;
+      --border-dark: #3a3d42;
+    }
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    background: var(--bg-paper);
+    color: var(--ink-primary);
+    min-height: 100vh;
+    overflow-y: scroll;
+    transition: background 0.3s ease, color 0.3s ease;
+  }
+
+  /* Sticky Wrapper for dynamic layouts */
+  .sticky-header-wrapper {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--bg-paper);
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  header {
+    padding: 20px 24px;
+    border-bottom: 3px double var(--border-dark); /* Classic newspaper double rule */
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+  }
+
+  .hdr-date {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--ink-secondary);
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+  }
+
+  .logo {
+    font-family: 'Newsreader', serif;
+    font-size: 28px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    color: var(--ink-primary);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    justify-content: center;
+  }
+
+  .dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--theme-color);
+    box-shadow: 0 0 8px rgba(var(--theme-color-rgb), 0.4);
+    display: inline-block;
+    transition: background 0.3s ease;
+  }
+
+  .hdr-right {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .key-pill {
+    font-size: 11px;
+    padding: 6px 14px;
+    border-radius: 4px;
+    font-family: 'Inter', sans-serif;
+    cursor: pointer;
+    border: 1px solid;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    transition: var(--transition);
+  }
+  
+  .key-pill:hover {
+    transform: translateY(-1px);
+  }
+  
+  .key-set {
+    color: #2e6144;
+    background: rgba(46, 97, 68, 0.05);
+    border-color: rgba(46, 97, 68, 0.25);
+  }
+  
+  .key-set:hover {
+    background: rgba(46, 97, 68, 0.12);
+    box-shadow: 0 4px 10px rgba(46, 97, 68, 0.05);
+  }
+  
+  .key-unset {
+    color: #a82e2e;
+    background: rgba(168, 46, 46, 0.04);
+    border-color: rgba(168, 46, 46, 0.2);
+  }
+  
+  .key-unset:hover {
+    background: rgba(168, 46, 46, 0.1);
+    box-shadow: 0 4px 10px rgba(168, 46, 46, 0.05);
+  }
+
+  .tabs {
+    display: flex;
+    justify-content: center;
+    overflow-x: auto;
+    background: var(--bg-paper);
+    padding: 0 20px;
+    scrollbar-width: none;
+    gap: 8px;
+  }
+
+  .tabs::-webkit-scrollbar {
+    display: none;
+  }
+
+  .tab {
+    padding: 14px 18px;
+    font-family: 'Newsreader', serif;
+    font-size: 15px;
+    color: var(--ink-secondary);
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    white-space: nowrap;
+    transition: var(--transition);
+    flex-shrink: 0;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .tab:hover {
+    color: var(--ink-primary);
+  }
+
+  .tab.active {
+    color: var(--ink-primary);
+    border-bottom-color: var(--theme-color);
+    font-weight: 700;
+  }
+
+  .page {
+    display: none;
+    padding: 36px 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+    animation: fadeIn 0.4s ease;
+  }
+
+  .page.active {
+    display: block;
+  }
+
+  /* Setup screen container styling */
+  .setup-wrap {
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 0;
+  }
+
+  .setup-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 40px;
+    max-width: 500px;
+    width: 100%;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.02);
+  }
+
+  .setup-card h2 {
+    font-family: 'Newsreader', serif;
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: var(--ink-primary);
+  }
+
+  .setup-card p {
+    font-family: 'Newsreader', serif;
+    font-size: 15px;
+    color: var(--ink-secondary);
+    line-height: 1.6;
+    margin-bottom: 24px;
+  }
+
+  .steps-list {
+    list-style: none;
+    margin-bottom: 28px;
+  }
+
+  .steps-list li {
+    display: flex;
+    gap: 12px;
+    font-size: 13.5px;
+    color: var(--ink-secondary);
+    margin-bottom: 16px;
+    line-height: 1.5;
+  }
+
+  .steps-list li .num {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: var(--ink-primary);
+    color: var(--bg-paper);
+    font-size: 11px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .steps-list a {
+    color: var(--ink-primary);
+    text-decoration: underline;
+    font-weight: 600;
+  }
+  
+  .steps-list a:hover {
+    opacity: 0.8;
+  }
+
+  .input-group {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+
+  .key-input {
+    flex: 1;
+    padding: 12px 14px;
+    background: var(--bg-paper);
+    border: 1px solid var(--border-dark);
+    border-radius: 4px;
+    color: var(--ink-primary);
+    font-size: 13px;
+    font-family: monospace;
+    outline: none;
+    transition: var(--transition);
+  }
+
+  .key-input:focus {
+    border-color: var(--ink-primary);
+  }
+
+  .btn-primary {
+    padding: 12px 24px;
+    background: var(--ink-primary);
+    color: var(--bg-paper);
+    border: 1px solid var(--ink-primary);
+    border-radius: 4px;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+  }
+
+  .btn-primary:hover {
+    background: transparent;
+    color: var(--ink-primary);
+  }
+
+  #key-err {
+    color: #a82e2e !important;
+    font-size: 12.5px !important;
+    margin-bottom: 16px !important;
+    padding: 10px 14px !important;
+    background: rgba(168, 46, 46, 0.05) !important;
+    border: 1px solid rgba(168, 46, 46, 0.15) !important;
+    border-radius: 4px !important;
+    animation: fadeIn 0.3s ease;
+  }
+
+  .note {
+    font-size: 11.5px;
+    color: var(--ink-secondary);
+    line-height: 1.5;
+    border-top: 1px solid var(--border-color);
+    padding-top: 12px;
+    margin-top: 12px;
+  }
+
+  .note a {
+    color: var(--ink-primary);
+    text-decoration: underline;
+    font-weight: 600;
+  }
+
+  /* Editorial Category header design */
+  .cat-top {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 32px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border-dark);
+    gap: 20px;
+  }
+
+  .cat-title {
+    font-family: 'Newsreader', serif;
+    font-size: 34px;
+    font-weight: 700;
+    font-style: italic;
+    color: var(--ink-primary);
+    letter-spacing: -0.5px;
+  }
+
+  .cat-sub {
+    font-family: 'Newsreader', serif;
+    font-size: 16px;
+    color: var(--ink-secondary);
+    margin-top: 6px;
+    line-height: 1.5;
+    max-width: 650px;
+  }
+
+  .load-btn {
+    padding: 10px 20px;
+    background: var(--ink-primary);
+    color: var(--bg-paper);
+    border: 1px solid var(--ink-primary);
+    border-radius: 4px;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+  }
+
+  .load-btn:hover {
+    background: transparent;
+    color: var(--ink-primary);
+  }
+
+  .load-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  .load-btn.refresh {
+    background: transparent;
+    color: var(--ink-primary);
+    border-color: var(--border-dark);
+  }
+  
+  .load-btn.refresh:hover {
+    background: var(--ink-primary);
+    color: var(--bg-paper);
+  }
+
+  /* Editorial News Layout */
+  .news-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  @media(min-width: 768px) {
+    .news-grid {
+      grid-template-columns: repeat(2, 1fr);
+      column-gap: 40px;
+      row-gap: 32px;
+    }
+  }
+
+  /* Column Card representation */
+  .card {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .card-title-link {
+    text-decoration: none;
+    color: inherit;
+    display: inline-block;
+  }
+
+  .card-title {
+    font-family: 'Newsreader', serif;
+    font-size: 21px;
+    font-weight: 700;
+    color: var(--ink-primary);
+    line-height: 1.35;
+    margin-bottom: 0;
+    transition: var(--transition);
+  }
+
+  .card-title-link:hover .card-title {
+    color: var(--theme-color);
+    text-decoration: underline;
+    text-decoration-thickness: 1.5px;
+    text-underline-offset: 4px;
+  }
+
+  .card-tag {
+    font-family: 'Inter', sans-serif;
+    font-size: 9px;
+    font-weight: 700;
+    padding: 3px 8px;
+    border-radius: 2px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+
+  .card-time {
+    font-size: 11px;
+    color: var(--ink-secondary);
+    font-family: monospace;
+  }
+
+  .card-desc {
+    font-family: 'Newsreader', serif;
+    font-size: 15px;
+    color: var(--ink-secondary);
+    margin-bottom: 8px;
+    line-height: 1.65;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .card-meta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: auto;
+    width: 100%;
+  }
+
+  .card-link {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--theme-color);
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-left: auto;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    transition: var(--transition);
+  }
+
+  .card-link:hover {
+    color: var(--ink-primary);
+    transform: translateX(4px);
+  }
+
+  /* Status bar rule */
+  .status-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border-color);
+    margin-bottom: 24px;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    color: var(--ink-secondary);
+    font-weight: 600;
+  }
+
+  .status-ok {
+    border-bottom: 2px solid var(--theme-color);
+  }
+
+  .status-err {
+    border-bottom: 2px solid #a82e2e;
+    color: #a82e2e;
+  }
+
+  /* Skeleton Grid & items */
+  .skel-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  @media(min-width: 768px) {
+    .skel-grid {
+      grid-template-columns: repeat(2, 1fr);
+      column-gap: 40px;
+      row-gap: 32px;
+    }
+  }
+
+  .sk {
+    background: transparent;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 24px;
+  }
+
+  .sh {
+    background: linear-gradient(90deg, var(--border-color) 25%, var(--bg-card) 50%, var(--border-color) 75%);
+    background-size: 200% 100%;
+    animation: shim 1.4s infinite;
+    border-radius: 4px;
+  }
+
+  @keyframes shim {
+    0% { background-position: 200% 0 }
+    100% { background-position: -200% 0 }
+  }
+
+  /* Empty State */
+  .empty {
+    text-align: center;
+    padding: 80px 20px;
+    color: var(--ink-secondary);
+    background: transparent;
+    border: 1px dashed var(--border-color);
+    border-radius: 8px;
+  }
+
+  .empty-icon {
+    font-size: 36px;
+    margin-bottom: 12px;
+    opacity: 0.3;
+  }
+
+  .footer {
+    text-align: center;
+    padding: 40px 20px;
+    font-size: 12px;
+    color: var(--ink-secondary);
+    border-top: 1px solid var(--border-color);
+    margin-top: 60px;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(4px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @media (max-width: 768px) {
+    header {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      padding: 16px;
+      text-align: center;
+    }
+    .hdr-date {
+      order: 1;
+    }
+    .logo {
+      order: 0;
+    }
+    .hdr-right {
+      order: 2;
+      width: 100%;
+      justify-content: center;
+    }
+    .cat-top {
+      flex-direction: column;
+      align-items: stretch;
+    }
+    .load-btn {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+</style>
+</head>
+<body>
+<div class="glow-bg" id="glow-bg"></div>
+
+<div class="sticky-header-wrapper">
+  <header>
+    <div class="hdr-date" id="hdr-date">Date</div>
+    <div class="logo"><div class="dot"></div>SIGNAL</div>
+    <div class="hdr-right">
+      <span id="key-pill" class="key-pill key-unset" onclick="showSetup()">⚙ Setup</span>
+    </div>
+  </header>
+
+  <div class="tabs">
+    <div class="tab active" onclick="switchTab('all')"       id="t-all">📰 All News</div>
+    <div class="tab"        onclick="switchTab('funding')"   id="t-funding">💰 Funding</div>
+    <div class="tab"        onclick="switchTab('d2c')"       id="t-d2c">🛒 D2C</div>
+    <div class="tab"        onclick="switchTab('saas')"      id="t-saas">⚡ SaaS & B2B</div>
+    <div class="tab"        onclick="switchTab('b2c')"       id="t-b2c">📱 B2C & Consumer</div>
+    <div class="tab"        onclick="switchTab('finance')"   id="t-finance">💹 Stocks & Finance</div>
+    <div class="tab"        onclick="switchTab('ai')"        id="t-ai">🤖 AI Tools</div>
+  </div>
+</div>
+
+<!-- Setup page -->
+<div id="page-setup" class="page active">
+  <div class="setup-wrap">
+    <div class="setup-card">
+      <div style="font-size:28px;margin-bottom:10px">🔑</div>
+      <h2>One-time free setup</h2>
+      <p>Signal uses <strong>NewsData.io</strong> to pull fresh India business news — funding rounds, D2C moves, SaaS launches, stock moves, and AI updates.</p>
+      <ul class="steps-list">
+        <li><span class="num">1</span><span>Go to <a href="https://newsdata.io" target="_blank">newsdata.io</a> and click <strong>Get API Key Free</strong></span></li>
+        <li><span class="num">2</span><span>Sign up with email — no credit card required, free forever (200 req/day)</span></li>
+        <li><span class="num">3</span><span>Copy your key (starts with <code style="color:var(--theme-color); font-weight:600;">pub_</code>) and paste below</span></li>
+      </ul>
+      <div class="input-group">
+        <input class="key-input" id="key-input" placeholder="pub_xxxxxxxxxxxxxxxx" autocomplete="off" />
+        <button class="btn-primary" onclick="saveKey()">Save →</button>
+      </div>
+      <div id="key-err" style="display:none"></div>
+      <div class="note">Key saved locally in your browser. Free tier: 200 requests/day · <a href="https://newsdata.io" target="_blank">No credit card needed</a>.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Category pages -->
+<div id="page-all"     class="page"></div>
+<div id="page-funding" class="page"></div>
+<div id="page-d2c"     class="page"></div>
+<div id="page-saas"    class="page"></div>
+<div id="page-b2c"     class="page"></div>
+<div id="page-finance" class="page"></div>
+<div id="page-ai"      class="page"></div>
+
+<div class="footer">
+  Powered by NewsData.io · Designed for premium India Business Intelligence
+</div>
+
+<script>
+const CATS = {
+  all: {
+    label: "All News",
+    icon: "📰",
+    color: "#1a1a1e", // Charcoal
+    rgb: "26, 26, 30",
+    dim: "rgba(26, 26, 30, 0.05)",
+    sub: "Consolidated business and tech signals from across all segments.",
+    q: "startup OR funding OR ecommerce OR SaaS OR stock OR AI",
+    category: "business,technology",
+    tagRules: [
+      { term: "funding", tag: "Funding" },
+      { term: "investment", tag: "VC" },
+      { term: "valuation", tag: "Valuation" },
+      { term: "d2c", tag: "D2C" },
+      { term: "ecommerce", tag: "E-Commerce" },
+      { term: "brand", tag: "Brand" },
+      { term: "saas", tag: "SaaS" },
+      { term: "software", tag: "Software" },
+      { term: "b2b", tag: "B2B" },
+      { term: "fintech", tag: "Fintech" },
+      { term: "app", tag: "App" },
+      { term: "platform", tag: "Platform" },
+      { term: "nifty", tag: "Markets" },
+      { term: "sensex", tag: "Markets" },
+      { term: "rbi", tag: "Macro" },
+      { term: "generative", tag: "GenAI" },
+      { term: "llm", tag: "LLM" },
+      { term: "gpt", tag: "GPT" }
+    ],
+    defaultTag: "Business"
+  },
+  funding: {
+    label: "Startup Funding",
+    icon: "💰",
+    color: "#1b4d3e", // Deep Forest Green
+    rgb: "27, 77, 62",
+    dim: "rgba(27, 77, 62, 0.05)",
+    sub: "Latest funding rounds, VC investments and valuations in India.",
+    q: "funding OR investment OR startup OR VC",
+    category: "business",
+    tagRules: [
+      { term: "funding", tag: "Funding" },
+      { term: "investment", tag: "VC" },
+      { term: "valuation", tag: "Valuation" }
+    ],
+    defaultTag: "Funding"
+  },
+  d2c: {
+    label: "D2C Happenings",
+    icon: "🛒",
+    color: "#b37400", // Warm Ochre
+    rgb: "179, 116, 0",
+    dim: "rgba(179, 116, 0, 0.05)",
+    sub: "Direct-to-consumer brand launches, growth, and market moves.",
+    q: "D2C OR ecommerce OR retail OR brand",
+    category: "business",
+    tagRules: [
+      { term: "d2c", tag: "D2C" },
+      { term: "ecommerce", tag: "E-Commerce" },
+      { term: "brand", tag: "Brand" }
+    ],
+    defaultTag: "D2C"
+  },
+  saas: {
+    label: "SaaS & B2B",
+    icon: "⚡",
+    color: "#1d3557", // Ink Blue
+    rgb: "29, 53, 87",
+    dim: "rgba(29, 53, 87, 0.05)",
+    sub: "Indian SaaS launches, B2B deals, enterprise tech news.",
+    q: "SaaS OR B2B OR software OR enterprise",
+    category: "technology",
+    tagRules: [
+      { term: "saas", tag: "SaaS" },
+      { term: "software", tag: "Software" },
+      { term: "b2b", tag: "B2B" }
+    ],
+    defaultTag: "SaaS"
+  },
+  b2c: {
+    label: "B2C & Consumer",
+    icon: "📱",
+    color: "#8b1e2f", // Deep Crimson
+    rgb: "139, 30, 47",
+    dim: "rgba(139, 30, 47, 0.05)",
+    sub: "Consumer apps, platforms, and B2C startup news from India.",
+    q: "consumer OR fintech OR app OR platform OR trend",
+    category: "business",
+    tagRules: [
+      { term: "fintech", tag: "Fintech" },
+      { term: "app", tag: "App" },
+      { term: "platform", tag: "Platform" }
+    ],
+    defaultTag: "Consumer"
+  },
+  finance: {
+    label: "Stocks & Finance",
+    icon: "💹",
+    color: "#2b2b2a", // Muted Charcoal
+    rgb: "43, 43, 42",
+    dim: "rgba(43, 43, 42, 0.05)",
+    sub: "Nifty, Sensex, RBI policy, FII flows, and stock moves.",
+    q: "Nifty OR Sensex OR stocks OR market OR RBI",
+    category: "business",
+    tagRules: [
+      { term: "nifty", tag: "Markets" },
+      { term: "sensex", tag: "Markets" },
+      { term: "rbi", tag: "Macro" }
+    ],
+    defaultTag: "Stocks"
+  },
+  ai: {
+    label: "AI Tools & Insights",
+    icon: "🤖",
+    color: "#582f63", // Muted Plum
+    rgb: "88, 47, 99",
+    dim: "rgba(88, 47, 99, 0.05)",
+    sub: "AI product launches, adoption trends, and intelligence tools.",
+    q: "AI OR intelligence OR LLM OR generative OR GPT",
+    category: "technology",
+    tagRules: [
+      { term: "generative", tag: "GenAI" },
+      { term: "llm", tag: "LLM" },
+      { term: "gpt", tag: "GPT" }
+    ],
+    defaultTag: "AI India"
+  }
+};
+
+let apiKey = localStorage.getItem("nd_key") || "";
+let cache  = {};
+let curTab = apiKey ? "all" : "setup";
+
+// Init
+updateHeaderDate();
+updateKeyPill();
+if (apiKey) {
+  switchTab("all");
+} else {
+  showSetup();
+}
+
+function updateHeaderDate() {
+  const d = new Date();
+  const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+  document.getElementById("hdr-date").textContent = d.toLocaleDateString("en-US", options);
+}
+
+function updateKeyPill() {
+  const el = document.getElementById("key-pill");
+  if (apiKey) {
+    el.textContent = "✓ Key saved";
+    el.className   = "key-pill key-set";
+    el.onclick     = resetKey;
+  } else {
+    el.textContent = "⚙ Setup";
+    el.className   = "key-pill key-unset";
+    el.onclick     = showSetup;
+  }
+}
+
+function showSetup() {
+  document.querySelectorAll(".page").forEach(p => p.classList.remove("active"));
+  document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
+  document.getElementById("page-setup").classList.add("active");
+  curTab = "setup";
+  document.documentElement.style.setProperty('--theme-color', '#7c6af5');
+  document.documentElement.style.setProperty('--theme-color-rgb', '124, 106, 245');
+}
+
+function resetKey() {
+  if (!confirm("Remove saved API key?")) return;
+  apiKey = ""; localStorage.removeItem("nd_key");
+  cache  = {};
+  updateKeyPill();
+  showSetup();
+}
+
+function saveKey() {
+  const v = document.getElementById("key-input").value.trim();
+  const err = document.getElementById("key-err");
+  if (!v) { err.textContent="Paste your API key first"; err.style.display="block"; return; }
+  if (!v.startsWith("pub_")) { err.textContent="Key should start with pub_"; err.style.display="block"; return; }
+  err.style.display = "none";
+  apiKey = v;
+  localStorage.setItem("nd_key", v);
+  updateKeyPill();
+  switchTab("all");
+}
+
+function switchTab(id) {
+  if (!apiKey && id !== "setup") { showSetup(); return; }
+  curTab = id;
+  document.querySelectorAll(".page").forEach(p => p.classList.remove("active"));
+  document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
+  
+  if (id === "setup") {
+    showSetup();
+  } else {
+    document.getElementById("page-" + id).classList.add("active");
+    document.getElementById("t-" + id).classList.add("active");
+    
+    // Set theme colors based on selected category
+    const cat = CATS[id];
+    document.documentElement.style.setProperty('--theme-color', cat.color);
+    document.documentElement.style.setProperty('--theme-color-rgb', cat.rgb);
+    
+    const page = document.getElementById("page-" + id);
+    if (!page.dataset.loaded) renderCat(id);
+  }
+}
+
+function parseDate(dateStr) {
+  if (!dateStr) return new Date();
+  let formatted = dateStr.trim().replace(" ", "T");
+  let d = new Date(formatted);
+  if (isNaN(d.getTime())) {
+    d = new Date(dateStr);
+  }
+  return d;
+}
+
+function timeAgo(s) {
+  if (!s) return "";
+  const d = parseDate(s);
+  const diff = Math.floor((Date.now() - d) / 1000);
+  if (isNaN(diff) || diff < 0) return "";
+  if (diff < 60) return "Just now";
+  if (diff < 3600) return Math.floor(diff / 60) + "m ago";
+  if (diff < 86400) return Math.floor(diff / 3600) + "h ago";
+  if (diff < 172800) return "Yesterday";
+  return Math.floor(diff / 86400) + "d ago";
+}
+
+function escapeHtml(str) {
+  if (!str) return '';
+  return str
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+}
+
+async function fetchQuery(q, category) {
+  // NewsData.io — India, English
+  const url = `https://newsdata.io/api/1/news?apikey=${apiKey}&q=${encodeURIComponent(q)}&language=en&country=in&category=${category}`;
+  const r   = await fetch(url);
+  if (!r.ok) throw new Error("HTTP " + r.status);
+  const d   = await r.json();
+  if (d.status === "error") throw new Error(d.message || "API error");
+  return d.results || [];
+}
+
+async function renderCat(id) {
+  const cat  = CATS[id];
+  const page = document.getElementById("page-" + id);
+  page.innerHTML = skelHTML(cat);
+
+  try {
+    const results = await fetchQuery(cat.q, cat.category);
+
+    let all = [];
+    results.forEach(a => {
+      const textToMatch = ((a.title || "") + " " + (a.description || "")).toLowerCase();
+      let assignedTag = cat.defaultTag;
+      for (const rule of cat.tagRules) {
+        if (textToMatch.includes(rule.term)) {
+          assignedTag = rule.tag;
+          break;
+        }
+      }
+      a._tag = assignedTag;
+      all.push(a);
+    });
+
+    // Deduplicate by title prefix
+    const seen = new Set();
+    all = all.filter(a => {
+      const k = (a.title||"").toLowerCase().slice(0, 55);
+      if (seen.has(k)) return false;
+      seen.add(k); return true;
+    });
+
+    // Sort by date descending
+    all.sort((a, b) => new Date(b.pubDate||0) - new Date(a.pubDate||0));
+    all = all.slice(0, 20);
+
+    if (!all.length) throw new Error("No recent articles found. Try refreshing.");
+
+    cache[id] = { items: all, ts: nowTS() };
+    page.dataset.loaded = "1";
+    renderCards(id);
+
+  } catch(e) {
+    page.innerHTML = `
+      ${catTopHTML(cat, true)}
+      <div class="status-bar status-err">⚠ ${e.message} <span style="opacity:0.6;font-size:10px">— tap Refresh</span></div>`;
+  }
+}
+
+async function refreshCat(id) {
+  delete cache[id];
+  const page = document.getElementById("page-" + id);
+  page.dataset.loaded = "";
+  await renderCat(id);
+}
+
+function renderCards(id) {
+  const cat  = CATS[id];
+  const hit  = cache[id];
+  const page = document.getElementById("page-" + id);
+  if (!hit) return;
+
+  let h = catTopHTML(cat, false, hit.ts, hit.items.length);
+
+  h += `<div class="news-grid">`;
+  hit.items.forEach(a => {
+    const src  = a.source_id ? a.source_id.toUpperCase().replace(/_/g, " ") : "";
+    const rawDesc = (a.description || "").replace(/<[^>]+>/g, "").trim();
+    const desc = rawDesc ? (rawDesc.length > 220 ? rawDesc.slice(0, 220) + "…" : rawDesc) : "No short summary is available for this story. Select 'Read Full Article' to view the publication directly.";
+    
+    h += `<div class="card">
+      <a href="${a.link || "#"}" target="_blank" class="card-title-link">
+        <div class="card-title">${escapeHtml(a.title || "Untitled")}</div>
+      </a>
+      <div class="card-desc">${escapeHtml(desc)}</div>
+      <div class="card-meta">
+        <span class="card-tag" style="background:${cat.dim};color:${cat.color}">${escapeHtml(a._tag)}</span>
+        <span class="card-time">${timeAgo(a.pubDate)}</span>
+        <a href="${a.link || "#"}" target="_blank" class="card-link">
+          Read full article ${src ? `on ${src}` : ""} →
+        </a>
+      </div>
+    </div>`;
+  });
+  h += `</div>`;
+
+  page.innerHTML = h;
+}
+
+function catTopHTML(cat, isErr, ts, count) {
+  const tsStr = ts ? `<span style="font-family:monospace;font-size:10px">${ts}</span>` : "";
+  const bar   = !isErr && ts
+    ? `<div class="status-bar status-ok"><span>✓ ${count} stories from last 48h</span>${tsStr}</div>`
+    : "";
+  return `<div class="cat-top">
+    <div>
+      <div class="cat-title">${cat.icon} ${cat.label}</div>
+      <div class="cat-sub">${cat.sub}</div>
+    </div>
+    <button class="load-btn refresh" onclick="refreshCat('${Object.keys(CATS).find(k=>CATS[k]===cat)}')">↻ Refresh</button>
+  </div>${bar}`;
+}
+
+function skelHTML(cat) {
+  let h = `<div class="cat-top"><div><div class="cat-title">${cat.icon} ${cat.label}</div><div class="cat-sub">${cat.sub}</div></div><button class="load-btn" disabled>Loading…</button></div>`;
+  h += `<div class="skel-grid">`;
+  for(let i=0;i<6;i++) h+=`<div class="sk"><div class="sh" style="height:13px;width:82%;margin-bottom:7px"></div><div class="sh" style="height:13px;width:58%;margin-bottom:10px"></div><div style="display:flex;gap:7px"><div class="sh" style="height:16px;width:65px;border-radius:4px"></div><div class="sh" style="height:16px;width:80px;border-radius:4px"></div><div class="sh" style="height:16px;width:44px;border-radius:4px"></div></div></div>`;
+  h += `</div>`;
+  return h;
+}
+
+function formatTS(date) {
+  const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+  const d = new Date(date);
+  if (isNaN(d.getTime())) return "";
+  
+  let hours = d.getHours();
+  const minutes = d.getMinutes().toString().padStart(2, '0');
+  const ampm = hours >= 12 ? 'pm' : 'am';
+  hours = hours % 12;
+  hours = hours ? hours : 12;
+  
+  const day = d.getDate();
+  const month = months[d.getMonth()];
+  
+  return `${hours}:${minutes} ${ampm} · ${day} ${month}`;
+}
+
+function nowTS() {
+  return formatTS(new Date());
+}
+</script>
+</body>
+</html>
