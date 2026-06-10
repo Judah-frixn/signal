@@ -101,42 +101,16 @@
     justify-content: flex-end;
   }
 
-  .key-pill {
+  .pill {
     font-size: 11px;
     padding: 6px 14px;
     border-radius: 4px;
     font-family: 'Inter', sans-serif;
-    cursor: pointer;
-    border: 1px solid;
+    border: 1px solid var(--border-dark);
     font-weight: 600;
     letter-spacing: 0.3px;
-    transition: var(--transition);
-  }
-  
-  .key-pill:hover {
-    transform: translateY(-1px);
-  }
-  
-  .key-set {
-    color: #2e6144;
-    background: rgba(46, 97, 68, 0.05);
-    border-color: rgba(46, 97, 68, 0.25);
-  }
-  
-  .key-set:hover {
-    background: rgba(46, 97, 68, 0.12);
-    box-shadow: 0 4px 10px rgba(46, 97, 68, 0.05);
-  }
-  
-  .key-unset {
-    color: #a82e2e;
-    background: rgba(168, 46, 46, 0.04);
-    border-color: rgba(168, 46, 46, 0.2);
-  }
-  
-  .key-unset:hover {
-    background: rgba(168, 46, 46, 0.1);
-    box-shadow: 0 4px 10px rgba(168, 46, 46, 0.05);
+    color: var(--ink-primary);
+    background: rgba(var(--theme-color-rgb), 0.04);
   }
 
   .tabs {
@@ -191,147 +165,6 @@
     display: block;
   }
 
-  /* Setup screen container styling */
-  .setup-wrap {
-    min-height: 60vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 20px 0;
-  }
-
-  .setup-card {
-    background: var(--bg-card);
-    border: 1px solid var(--border-color);
-    border-radius: 8px;
-    padding: 40px;
-    max-width: 500px;
-    width: 100%;
-    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.02);
-  }
-
-  .setup-card h2 {
-    font-family: 'Newsreader', serif;
-    font-size: 24px;
-    font-weight: 700;
-    margin-bottom: 12px;
-    color: var(--ink-primary);
-  }
-
-  .setup-card p {
-    font-family: 'Newsreader', serif;
-    font-size: 15px;
-    color: var(--ink-secondary);
-    line-height: 1.6;
-    margin-bottom: 24px;
-  }
-
-  .steps-list {
-    list-style: none;
-    margin-bottom: 28px;
-  }
-
-  .steps-list li {
-    display: flex;
-    gap: 12px;
-    font-size: 13.5px;
-    color: var(--ink-secondary);
-    margin-bottom: 16px;
-    line-height: 1.5;
-  }
-
-  .steps-list li .num {
-    width: 22px;
-    height: 22px;
-    border-radius: 50%;
-    background: var(--ink-primary);
-    color: var(--bg-paper);
-    font-size: 11px;
-    font-weight: 700;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    margin-top: 1px;
-  }
-
-  .steps-list a {
-    color: var(--ink-primary);
-    text-decoration: underline;
-    font-weight: 600;
-  }
-  
-  .steps-list a:hover {
-    opacity: 0.8;
-  }
-
-  .input-group {
-    display: flex;
-    gap: 8px;
-    margin-bottom: 12px;
-  }
-
-  .key-input {
-    flex: 1;
-    padding: 12px 14px;
-    background: var(--bg-paper);
-    border: 1px solid var(--border-dark);
-    border-radius: 4px;
-    color: var(--ink-primary);
-    font-size: 13px;
-    font-family: monospace;
-    outline: none;
-    transition: var(--transition);
-  }
-
-  .key-input:focus {
-    border-color: var(--ink-primary);
-  }
-
-  .btn-primary {
-    padding: 12px 24px;
-    background: var(--ink-primary);
-    color: var(--bg-paper);
-    border: 1px solid var(--ink-primary);
-    border-radius: 4px;
-    font-family: 'Inter', sans-serif;
-    font-size: 13px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: var(--transition);
-  }
-
-  .btn-primary:hover {
-    background: transparent;
-    color: var(--ink-primary);
-  }
-
-  #key-err {
-    color: #a82e2e !important;
-    font-size: 12.5px !important;
-    margin-bottom: 16px !important;
-    padding: 10px 14px !important;
-    background: rgba(168, 46, 46, 0.05) !important;
-    border: 1px solid rgba(168, 46, 46, 0.15) !important;
-    border-radius: 4px !important;
-    animation: fadeIn 0.3s ease;
-  }
-
-  .note {
-    font-size: 11.5px;
-    color: var(--ink-secondary);
-    line-height: 1.5;
-    border-top: 1px solid var(--border-color);
-    padding-top: 12px;
-    margin-top: 12px;
-  }
-
-  .note a {
-    color: var(--ink-primary);
-    text-decoration: underline;
-    font-weight: 600;
-  }
-
   /* Editorial Category header design */
   .cat-top {
     display: flex;
@@ -361,8 +194,76 @@
     max-width: 650px;
   }
 
-  .load-btn {
+  .rfbtn {
     padding: 10px 20px;
+    background: transparent;
+    color: var(--ink-primary);
+    border: 1px solid var(--border-dark);
+    border-radius: 4px;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+  }
+
+  .rfbtn:hover {
+    background: var(--ink-primary);
+    color: var(--bg-paper);
+  }
+
+  .rfbtn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  /* Setup/API pasting banner */
+  .setup-banner {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 28px;
+    margin-bottom: 24px;
+    font-family: 'Newsreader', serif;
+    font-size: 15px;
+    color: var(--ink-secondary);
+    line-height: 1.6;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+  }
+
+  .setup-banner h3 {
+    font-family: 'Newsreader', serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--ink-primary);
+    margin-bottom: 8px;
+  }
+
+  .input-row {
+    display: flex;
+    gap: 8px;
+    margin-top: 14px;
+  }
+
+  .url-input {
+    flex: 1;
+    padding: 10px 14px;
+    background: var(--bg-paper);
+    border: 1px solid var(--border-dark);
+    border-radius: 4px;
+    color: var(--ink-primary);
+    font-size: 13px;
+    font-family: monospace;
+    outline: none;
+    transition: var(--transition);
+  }
+
+  .url-input:focus {
+    border-color: var(--ink-primary);
+  }
+
+  .save-btn {
+    padding: 10px 18px;
     background: var(--ink-primary);
     color: var(--bg-paper);
     border: 1px solid var(--ink-primary);
@@ -374,25 +275,9 @@
     transition: var(--transition);
   }
 
-  .load-btn:hover {
+  .save-btn:hover {
     background: transparent;
     color: var(--ink-primary);
-  }
-
-  .load-btn:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-  }
-
-  .load-btn.refresh {
-    background: transparent;
-    color: var(--ink-primary);
-    border-color: var(--border-dark);
-  }
-  
-  .load-btn.refresh:hover {
-    background: var(--ink-primary);
-    color: var(--bg-paper);
   }
 
   /* Editorial News Layout */
@@ -419,12 +304,8 @@
     display: flex;
     flex-direction: column;
     gap: 12px;
-  }
-
-  .card-title-link {
-    text-decoration: none;
-    color: inherit;
-    display: inline-block;
+    cursor: pointer;
+    transition: var(--transition);
   }
 
   .card-title {
@@ -433,11 +314,10 @@
     font-weight: 700;
     color: var(--ink-primary);
     line-height: 1.35;
-    margin-bottom: 0;
     transition: var(--transition);
   }
 
-  .card-title-link:hover .card-title {
+  .card:hover .card-title {
     color: var(--theme-color);
     text-decoration: underline;
     text-decoration-thickness: 1.5px;
@@ -454,22 +334,50 @@
     text-transform: uppercase;
   }
 
+  .card-source {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--ink-primary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
   .card-time {
     font-size: 11px;
     color: var(--ink-secondary);
     font-family: monospace;
+    margin-left: auto;
   }
 
   .card-desc {
     font-family: 'Newsreader', serif;
     font-size: 15px;
     color: var(--ink-secondary);
-    margin-bottom: 8px;
     line-height: 1.65;
     display: -webkit-box;
-    -webkit-line-clamp: 4;
+    -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
+  }
+
+  .card-read {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--theme-color);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    transition: var(--transition);
+    margin-top: auto;
+  }
+
+  .card:hover .card-read {
+    color: var(--ink-primary);
+    transform: translateX(4px);
   }
 
   .card-meta {
@@ -481,28 +389,8 @@
     width: 100%;
   }
 
-  .card-link {
-    font-family: 'Inter', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    color: var(--theme-color);
-    text-decoration: none;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    margin-left: auto;
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
-    transition: var(--transition);
-  }
-
-  .card-link:hover {
-    color: var(--ink-primary);
-    transform: translateX(4px);
-  }
-
   /* Status bar rule */
-  .status-bar {
+  .sbar {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -515,11 +403,11 @@
     font-weight: 600;
   }
 
-  .status-ok {
+  .sbar-ok {
     border-bottom: 2px solid var(--theme-color);
   }
 
-  .status-err {
+  .sbar-err {
     border-bottom: 2px solid #a82e2e;
     color: #a82e2e;
   }
@@ -556,7 +444,198 @@
     100% { background-position: -200% 0 }
   }
 
-  /* Empty State */
+  /* Article reader drawer */
+  .drawer-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 200;
+    display: none;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+  }
+  .drawer-overlay.open {
+    display: block;
+  }
+
+  .drawer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 85vh;
+    background: var(--bg-paper);
+    border-top: 1px solid var(--border-dark);
+    border-radius: 16px 16px 0 0;
+    z-index: 201;
+    display: flex;
+    flex-direction: column;
+    transform: translateY(100%);
+    transition: transform 0.4s cubic-bezier(0.32, 0.72, 0, 1);
+    box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.15);
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .drawer.open {
+    transform: translateY(0);
+  }
+
+  .drawer-handle {
+    width: 40px;
+    height: 5px;
+    background: var(--border-dark);
+    border-radius: 3px;
+    margin: 12px auto 0;
+    cursor: pointer;
+  }
+
+  .drawer-header {
+    padding: 24px 28px 16px;
+    border-bottom: 1px solid var(--border-color);
+    flex-shrink: 0;
+  }
+
+  .drawer-meta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--ink-secondary);
+  }
+
+  .drawer-tag {
+    font-size: 10px;
+    padding: 3px 8px;
+    border-radius: 2px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+
+  .drawer-source {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--ink-primary);
+    text-transform: uppercase;
+  }
+
+  .drawer-time {
+    font-size: 11px;
+    font-family: monospace;
+    margin-left: auto;
+  }
+
+  .drawer-title {
+    font-family: 'Newsreader', serif;
+    font-size: 26px;
+    font-weight: 700;
+    line-height: 1.35;
+    color: var(--ink-primary);
+    margin-bottom: 16px;
+  }
+
+  .drawer-actions {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+
+  .drawer-btn {
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    border: 1px solid var(--border-dark);
+    background: transparent;
+    color: var(--ink-primary);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: var(--transition);
+  }
+
+  .drawer-btn.primary {
+    background: var(--ink-primary);
+    border-color: var(--ink-primary);
+    color: var(--bg-paper);
+  }
+
+  .drawer-btn:hover {
+    background: var(--ink-primary);
+    color: var(--bg-paper);
+  }
+  
+  .drawer-btn.primary:hover {
+    background: transparent;
+    color: var(--ink-primary);
+  }
+
+  .drawer-close {
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    border: 1px solid var(--border-color);
+    background: transparent;
+    color: var(--ink-secondary);
+    margin-left: auto;
+    transition: var(--transition);
+  }
+  .drawer-close:hover {
+    border-color: var(--border-dark);
+    color: var(--ink-primary);
+  }
+
+  .drawer-body {
+    flex: 1;
+    overflow-y: auto;
+    padding: 32px 28px;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .article-text {
+    font-family: 'Newsreader', serif;
+    font-size: 17px;
+    line-height: 1.8;
+    color: var(--ink-primary);
+    white-space: pre-wrap;
+  }
+
+  .article-loading {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 10px 0;
+  }
+
+  .ash {
+    background: linear-gradient(90deg, var(--border-color) 25%, var(--bg-card) 50%, var(--border-color) 75%);
+    background-size: 200% 100%;
+    animation: shim 1.4s infinite;
+    border-radius: 4px;
+  }
+
+  .article-error {
+    font-family: 'Newsreader', serif;
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--ink-secondary);
+  }
+
+  .article-error a {
+    color: var(--theme-color);
+    text-decoration: underline;
+    font-weight: 600;
+  }
+
   .empty {
     text-align: center;
     padding: 80px 20px;
@@ -564,12 +643,6 @@
     background: transparent;
     border: 1px dashed var(--border-color);
     border-radius: 8px;
-  }
-
-  .empty-icon {
-    font-size: 36px;
-    margin-bottom: 12px;
-    opacity: 0.3;
   }
 
   .footer {
@@ -609,7 +682,7 @@
       flex-direction: column;
       align-items: stretch;
     }
-    .load-btn {
+    .rfbtn {
       width: 100%;
       justify-content: center;
     }
@@ -617,52 +690,28 @@
 </style>
 </head>
 <body>
-<div class="glow-bg" id="glow-bg"></div>
 
 <div class="sticky-header-wrapper">
   <header>
     <div class="hdr-date" id="hdr-date">Date</div>
     <div class="logo"><div class="dot"></div>SIGNAL</div>
     <div class="hdr-right">
-      <span id="key-pill" class="key-pill key-unset" onclick="showSetup()">⚙ Setup</span>
+      <span class="pill">🇮🇳 India Intel</span>
     </div>
   </header>
 
   <div class="tabs">
-    <div class="tab active" onclick="switchTab('all')"       id="t-all">📰 All News</div>
-    <div class="tab"        onclick="switchTab('funding')"   id="t-funding">💰 Funding</div>
-    <div class="tab"        onclick="switchTab('d2c')"       id="t-d2c">🛒 D2C</div>
-    <div class="tab"        onclick="switchTab('saas')"      id="t-saas">⚡ SaaS & B2B</div>
-    <div class="tab"        onclick="switchTab('b2c')"       id="t-b2c">📱 B2C & Consumer</div>
-    <div class="tab"        onclick="switchTab('finance')"   id="t-finance">💹 Stocks & Finance</div>
-    <div class="tab"        onclick="switchTab('ai')"        id="t-ai">🤖 AI Tools</div>
+    <div class="tab active" onclick="go('all')"     id="t-all">⚡ All News</div>
+    <div class="tab"        onclick="go('funding')" id="t-funding">💰 Funding</div>
+    <div class="tab"        onclick="go('d2c')"     id="t-d2c">🛒 D2C</div>
+    <div class="tab"        onclick="go('saas')"    id="t-saas">⚡ SaaS & B2B</div>
+    <div class="tab"        onclick="go('b2c')"     id="t-b2c">📱 B2C</div>
+    <div class="tab"        onclick="go('finance')" id="t-finance">💹 Finance</div>
+    <div class="tab"        onclick="go('ai')"      id="t-ai">🤖 AI</div>
   </div>
 </div>
 
-<!-- Setup page -->
-<div id="page-setup" class="page active">
-  <div class="setup-wrap">
-    <div class="setup-card">
-      <div style="font-size:28px;margin-bottom:10px">🔑</div>
-      <h2>One-time free setup</h2>
-      <p>Signal uses <strong>NewsData.io</strong> to pull fresh India business news — funding rounds, D2C moves, SaaS launches, stock moves, and AI updates.</p>
-      <ul class="steps-list">
-        <li><span class="num">1</span><span>Go to <a href="https://newsdata.io" target="_blank">newsdata.io</a> and click <strong>Get API Key Free</strong></span></li>
-        <li><span class="num">2</span><span>Sign up with email — no credit card required, free forever (200 req/day)</span></li>
-        <li><span class="num">3</span><span>Copy your key (starts with <code style="color:var(--theme-color); font-weight:600;">pub_</code>) and paste below</span></li>
-      </ul>
-      <div class="input-group">
-        <input class="key-input" id="key-input" placeholder="pub_xxxxxxxxxxxxxxxx" autocomplete="off" />
-        <button class="btn-primary" onclick="saveKey()">Save →</button>
-      </div>
-      <div id="key-err" style="display:none"></div>
-      <div class="note">Key saved locally in your browser. Free tier: 200 requests/day · <a href="https://newsdata.io" target="_blank">No credit card needed</a>.</div>
-    </div>
-  </div>
-</div>
-
-<!-- Category pages -->
-<div id="page-all"     class="page"></div>
+<div id="page-all"     class="page active"></div>
 <div id="page-funding" class="page"></div>
 <div id="page-d2c"     class="page"></div>
 <div id="page-saas"    class="page"></div>
@@ -670,223 +719,221 @@
 <div id="page-finance" class="page"></div>
 <div id="page-ai"      class="page"></div>
 
+<!-- Article reader drawer -->
+<div class="drawer-overlay" id="overlay" onclick="closeDrawer()"></div>
+<div class="drawer" id="drawer">
+  <div class="drawer-handle"></div>
+  <div class="drawer-header">
+    <div class="drawer-meta" id="d-meta"></div>
+    <div class="drawer-title" id="d-title"></div>
+    <div class="drawer-actions">
+      <a class="drawer-btn primary" id="d-link" href="#" target="_blank">↗ Open original</a>
+      <button class="drawer-close" onclick="closeDrawer()">✕ Close</button>
+    </div>
+  </div>
+  <div class="drawer-body" id="d-body"></div>
+</div>
+
 <div class="footer">
-  Powered by NewsData.io · Designed for premium India Business Intelligence
+  Powered by NewsData.io & custom Reader Scraper · Designed for premium India Business Intelligence
 </div>
 
 <script>
+let API_BASE = localStorage.getItem("signal_api") || "";
+let cache = {};
+
 const CATS = {
-  all: {
-    label: "All News",
-    icon: "📰",
-    color: "#1a1a1e", // Charcoal
-    rgb: "26, 26, 30",
-    dim: "rgba(26, 26, 30, 0.05)",
-    sub: "Consolidated business and tech signals from across all segments.",
-    q: "startup OR funding OR ecommerce OR SaaS OR stock OR AI",
-    category: "business,technology",
-    tagRules: [
-      { term: "funding", tag: "Funding" },
-      { term: "investment", tag: "VC" },
-      { term: "valuation", tag: "Valuation" },
-      { term: "d2c", tag: "D2C" },
-      { term: "ecommerce", tag: "E-Commerce" },
-      { term: "brand", tag: "Brand" },
-      { term: "saas", tag: "SaaS" },
-      { term: "software", tag: "Software" },
-      { term: "b2b", tag: "B2B" },
-      { term: "fintech", tag: "Fintech" },
-      { term: "app", tag: "App" },
-      { term: "platform", tag: "Platform" },
-      { term: "nifty", tag: "Markets" },
-      { term: "sensex", tag: "Markets" },
-      { term: "rbi", tag: "Macro" },
-      { term: "generative", tag: "GenAI" },
-      { term: "llm", tag: "LLM" },
-      { term: "gpt", tag: "GPT" }
-    ],
-    defaultTag: "Business"
-  },
-  funding: {
-    label: "Startup Funding",
-    icon: "💰",
-    color: "#1b4d3e", // Deep Forest Green
-    rgb: "27, 77, 62",
-    dim: "rgba(27, 77, 62, 0.05)",
-    sub: "Latest funding rounds, VC investments and valuations in India.",
-    q: "funding OR investment OR startup OR VC",
-    category: "business",
-    tagRules: [
-      { term: "funding", tag: "Funding" },
-      { term: "investment", tag: "VC" },
-      { term: "valuation", tag: "Valuation" }
-    ],
-    defaultTag: "Funding"
-  },
-  d2c: {
-    label: "D2C Happenings",
-    icon: "🛒",
-    color: "#b37400", // Warm Ochre
-    rgb: "179, 116, 0",
-    dim: "rgba(179, 116, 0, 0.05)",
-    sub: "Direct-to-consumer brand launches, growth, and market moves.",
-    q: "D2C OR ecommerce OR retail OR brand",
-    category: "business",
-    tagRules: [
-      { term: "d2c", tag: "D2C" },
-      { term: "ecommerce", tag: "E-Commerce" },
-      { term: "brand", tag: "Brand" }
-    ],
-    defaultTag: "D2C"
-  },
-  saas: {
-    label: "SaaS & B2B",
-    icon: "⚡",
-    color: "#1d3557", // Ink Blue
-    rgb: "29, 53, 87",
-    dim: "rgba(29, 53, 87, 0.05)",
-    sub: "Indian SaaS launches, B2B deals, enterprise tech news.",
-    q: "SaaS OR B2B OR software OR enterprise",
-    category: "technology",
-    tagRules: [
-      { term: "saas", tag: "SaaS" },
-      { term: "software", tag: "Software" },
-      { term: "b2b", tag: "B2B" }
-    ],
-    defaultTag: "SaaS"
-  },
-  b2c: {
-    label: "B2C & Consumer",
-    icon: "📱",
-    color: "#8b1e2f", // Deep Crimson
-    rgb: "139, 30, 47",
-    dim: "rgba(139, 30, 47, 0.05)",
-    sub: "Consumer apps, platforms, and B2C startup news from India.",
-    q: "consumer OR fintech OR app OR platform OR trend",
-    category: "business",
-    tagRules: [
-      { term: "fintech", tag: "Fintech" },
-      { term: "app", tag: "App" },
-      { term: "platform", tag: "Platform" }
-    ],
-    defaultTag: "Consumer"
-  },
-  finance: {
-    label: "Stocks & Finance",
-    icon: "💹",
-    color: "#2b2b2a", // Muted Charcoal
-    rgb: "43, 43, 42",
-    dim: "rgba(43, 43, 42, 0.05)",
-    sub: "Nifty, Sensex, RBI policy, FII flows, and stock moves.",
-    q: "Nifty OR Sensex OR stocks OR market OR RBI",
-    category: "business",
-    tagRules: [
-      { term: "nifty", tag: "Markets" },
-      { term: "sensex", tag: "Markets" },
-      { term: "rbi", tag: "Macro" }
-    ],
-    defaultTag: "Stocks"
-  },
-  ai: {
-    label: "AI Tools & Insights",
-    icon: "🤖",
-    color: "#582f63", // Muted Plum
-    rgb: "88, 47, 99",
-    dim: "rgba(88, 47, 99, 0.05)",
-    sub: "AI product launches, adoption trends, and intelligence tools.",
-    q: "AI OR intelligence OR LLM OR generative OR GPT",
-    category: "technology",
-    tagRules: [
-      { term: "generative", tag: "GenAI" },
-      { term: "llm", tag: "LLM" },
-      { term: "gpt", tag: "GPT" }
-    ],
-    defaultTag: "AI India"
-  }
+  all:     {label:"All News",        icon:"⚡", color:"#1a1a1e", rgb:"26, 26, 30", dim:"rgba(26, 26, 30, 0.05)",  sub:"Everything across all categories — freshest first."},
+  funding: {label:"Startup Funding", icon:"💰", color:"#1b4d3e", rgb:"27, 77, 62", dim:"rgba(27, 77, 62, 0.05)",   sub:"Funding rounds, VC deals and valuations across India."},
+  d2c:     {label:"D2C Happenings",  icon:"🛒", color:"#b37400", rgb:"179, 116, 0", dim:"rgba(179, 116, 0, 0.05)",   sub:"D2C brand launches, growth and market moves."},
+  saas:    {label:"SaaS & B2B",      icon:"⚡", color:"#1d3557", rgb:"29, 53, 87", dim:"rgba(29, 53, 87, 0.05)",  sub:"Indian SaaS launches, B2B product news, enterprise deals."},
+  b2c:     {label:"B2C & Consumer",  icon:"📱", color:"#8b1e2f", rgb:"139, 30, 47", dim:"rgba(139, 30, 47, 0.05)",   sub:"Consumer apps, platforms and B2C startup news."},
+  finance: {label:"Stocks & Finance",icon:"💹", color:"#2b2b2a", rgb:"43, 43, 42", dim:"rgba(43, 43, 42, 0.05)",  sub:"Nifty, Sensex, RBI, IPOs and equity moves."},
+  ai:      {label:"AI Tools",        icon:"🤖", color:"#582f63", rgb:"88, 47, 99", dim:"rgba(88, 47, 99, 0.05)",  sub:"AI tool launches, India AI adoption, GenAI updates."}
 };
 
-let apiKey = localStorage.getItem("nd_key") || "";
-let cache  = {};
-let curTab = apiKey ? "all" : "setup";
+const TAG_COLORS = {
+  "Funding":   {color:"#1b4d3e", dim:"rgba(27, 77, 62, 0.08)"},
+  "D2C":       {color:"#b37400", dim:"rgba(179, 116, 0, 0.08)"},
+  "SaaS & B2B":{color:"#1d3557", dim:"rgba(29, 53, 87, 0.08)"},
+  "B2C":       {color:"#8b1e2f", dim:"rgba(139, 30, 47, 0.08)"},
+  "Finance":   {color:"#2b2b2a", dim:"rgba(43, 43, 42, 0.08)"},
+  "AI Tools":  {color:"#582f63", dim:"rgba(88, 47, 99, 0.08)"},
+};
 
-// Init
-updateHeaderDate();
-updateKeyPill();
-if (apiKey) {
-  switchTab("all");
-} else {
-  showSetup();
-}
-
-function updateHeaderDate() {
-  const d = new Date();
-  const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-  document.getElementById("hdr-date").textContent = d.toLocaleDateString("en-US", options);
-}
-
-function updateKeyPill() {
-  const el = document.getElementById("key-pill");
-  if (apiKey) {
-    el.textContent = "✓ Key saved";
-    el.className   = "key-pill key-set";
-    el.onclick     = resetKey;
-  } else {
-    el.textContent = "⚙ Setup";
-    el.className   = "key-pill key-unset";
-    el.onclick     = showSetup;
-  }
-}
-
-function showSetup() {
-  document.querySelectorAll(".page").forEach(p => p.classList.remove("active"));
-  document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
-  document.getElementById("page-setup").classList.add("active");
-  curTab = "setup";
-  document.documentElement.style.setProperty('--theme-color', '#7c6af5');
-  document.documentElement.style.setProperty('--theme-color-rgb', '124, 106, 245');
-}
-
-function resetKey() {
-  if (!confirm("Remove saved API key?")) return;
-  apiKey = ""; localStorage.removeItem("nd_key");
-  cache  = {};
-  updateKeyPill();
-  showSetup();
-}
-
-function saveKey() {
-  const v = document.getElementById("key-input").value.trim();
-  const err = document.getElementById("key-err");
-  if (!v) { err.textContent="Paste your API key first"; err.style.display="block"; return; }
-  if (!v.startsWith("pub_")) { err.textContent="Key should start with pub_"; err.style.display="block"; return; }
-  err.style.display = "none";
-  apiKey = v;
-  localStorage.setItem("nd_key", v);
-  updateKeyPill();
-  switchTab("all");
-}
-
-function switchTab(id) {
-  if (!apiKey && id !== "setup") { showSetup(); return; }
-  curTab = id;
-  document.querySelectorAll(".page").forEach(p => p.classList.remove("active"));
-  document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
+// ── Navigation ──────────────────────────────────────────────
+function go(id) {
+  document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
+  document.querySelectorAll(".tab").forEach(t=>t.classList.remove("active"));
+  document.getElementById("page-"+id).classList.add("active");
+  document.getElementById("t-"+id).classList.add("active");
   
-  if (id === "setup") {
-    showSetup();
-  } else {
-    document.getElementById("page-" + id).classList.add("active");
-    document.getElementById("t-" + id).classList.add("active");
-    
-    // Set theme colors based on selected category
-    const cat = CATS[id];
-    document.documentElement.style.setProperty('--theme-color', cat.color);
-    document.documentElement.style.setProperty('--theme-color-rgb', cat.rgb);
-    
-    const page = document.getElementById("page-" + id);
-    if (!page.dataset.loaded) renderCat(id);
+  // Set tab active style colors
+  const cat = CATS[id];
+  document.documentElement.style.setProperty('--theme-color', cat.color);
+  document.documentElement.style.setProperty('--theme-color-rgb', cat.rgb);
+
+  if (!cache[id]) loadCat(id);
+  else renderPage(id);
+}
+
+function saveApiUrl() {
+  const v = document.getElementById("api-url-input").value.trim().replace(/\/$/,"");
+  if (!v.startsWith("http")) { alert("Paste your full Render URL"); return; }
+  API_BASE = v; 
+  localStorage.setItem("signal_api", v); 
+  cache = {}; 
+  go("all");
+}
+
+// ── Data fetching ────────────────────────────────────────────
+async function loadCat(id) {
+  const cat  = CATS[id];
+  const page = document.getElementById("page-"+id);
+  if (!API_BASE) { page.innerHTML = topHTML(cat,id) + setupBanner(); return; }
+  page.innerHTML = skelHTML(cat);
+  try {
+    const endpoint = id === "all" ? "all" : id;
+    const r = await fetch(`${API_BASE}/news/${endpoint}`);
+    if (!r.ok) throw new Error("Server error " + r.status);
+    const d = await r.json();
+    if (!d.articles?.length) throw new Error("No articles returned.");
+    cache[id] = { items: d.articles, ts: nowTS() };
+    renderPage(id);
+  } catch(e) {
+    page.innerHTML = topHTML(cat,id) +
+      `<div class="sbar sbar-err">⚠ ${e.message}</div>`;
   }
 }
+
+function renderPage(id) {
+  const cat = CATS[id], hit = cache[id];
+  if (!hit) return;
+  const page = document.getElementById("page-"+id);
+  let h = topHTML(cat,id);
+  h += `<div class="sbar sbar-ok"><span>✓ ${hit.items.length} stories</span><span style="font-family:monospace;font-size:10px">${hit.ts}</span></div>`;
+
+  h += `<div class="news-grid">`;
+  hit.items.forEach((a,i) => {
+    const tc = id==="all"
+      ? (TAG_COLORS[a.category] || {color:"#1a1a1e",dim:"rgba(26, 26, 30, 0.08)"})
+      : {color: cat.color, dim: cat.dim};
+    const label = id==="all" ? (a.category||"News") : cat.label;
+    const desc  = clean(a.description, 200);
+    h += `<div class="card" onclick="openArticleIndex('${id}', ${i})">
+      <div class="card-top">
+        <span class="card-tag" style="background:${tc.dim};color:${tc.color}">${escapeHtml(label)}</span>
+        ${a.source?`<span class="card-source">${escapeHtml(a.source)}</span>`:""}
+        <span class="card-time">${timeAgo(a.pubDate)}</span>
+      </div>
+      <div class="card-title">${escapeHtml(a.title)}</div>
+      ${desc?`<div class="card-desc">${escapeHtml(desc)}</div>`:""}
+      <div class="card-read">Read full story →</div>
+    </div>`;
+  });
+  h += `</div>`;
+  page.innerHTML = h;
+}
+
+// ── Article drawer ───────────────────────────────────────────
+function openArticleIndex(catId, index) {
+  const article = cache[catId].items[index];
+  openArticle(article);
+}
+
+async function openArticle(article) {
+  const tc = TAG_COLORS[article.category] || {color:"#1a1a1e",dim:"rgba(26, 26, 30, 0.08)"};
+  
+  // Set header
+  document.getElementById("d-meta").innerHTML = `
+    <span class="drawer-tag" style="background:${tc.dim};color:${tc.color}">${article.category||"News"}</span>
+    ${article.source?`<span class="drawer-source">${escapeHtml(article.source)}</span>`:""}
+    <span class="drawer-time">${timeAgo(article.pubDate)}</span>`;
+  document.getElementById("d-title").textContent = article.title;
+  document.getElementById("d-link").href = article.link || "#";
+
+  // Show drawer
+  document.getElementById("overlay").classList.add("open");
+  document.getElementById("drawer").classList.add("open");
+  document.body.style.overflow = "hidden";
+
+  // Show loading skeleton
+  document.getElementById("d-body").innerHTML = `<div class="article-loading">
+    ${[95,80,90,70,85,75,60,88,72,50].map(w=>`<div class="ash" style="height:14px;width:${w}%"></div>`).join("")}
+  </div>`;
+
+  // Fetch full article from backend
+  try {
+    const r = await fetch(`${API_BASE}/article?url=${encodeURIComponent(article.link)}`);
+    const d = await r.json();
+    if (r.ok && d.content) {
+      document.getElementById("d-body").innerHTML =
+        `<div class="article-text">${escapeHtml(d.content)}</div>`;
+    } else {
+      throw new Error(d.error || "Could not extract content");
+    }
+  } catch(e) {
+    // Fallback: show description + link
+    document.getElementById("d-body").innerHTML = `
+      <div class="article-error">
+        <p style="margin-bottom:12px">${escapeHtml(clean(article.description,500)) || "No preview available."}</p>
+        <p>⚠ Full content couldn't be extracted from this source.</p>
+        <p style="margin-top:8px"><a href="${article.link}" target="_blank">→ Read on original site</a></p>
+      </div>`;
+  }
+}
+
+function closeDrawer() {
+  document.getElementById("overlay").classList.remove("open");
+  document.getElementById("drawer").classList.remove("open");
+  document.body.style.overflow = "";
+}
+
+// Close drawer on swipe down
+let startY = 0;
+document.getElementById("drawer").addEventListener("touchstart", e => { startY = e.touches[0].clientY; });
+document.getElementById("drawer").addEventListener("touchend", e => {
+  if (e.changedTouches[0].clientY - startY > 80) closeDrawer();
+});
+
+// ── Helpers ──────────────────────────────────────────────────
+function topHTML(cat,id) {
+  return `<div class="cat-top">
+    <div><div class="cat-title">${cat.icon} ${cat.label}</div><div class="cat-sub">${cat.sub}</div></div>
+    <button class="rfbtn" onclick="refresh('${id}')">↻ Refresh</button>
+  </div>`;
+}
+
+function setupBanner() {
+  return `<div class="setup-banner">
+    <h3>⚙ Paste your backend URL</h3>
+    Deploy the Signal backend on Render then paste the URL below — only needed once.
+    <div class="input-row">
+      <input class="url-input" id="api-url-input" placeholder="https://signal-api.onrender.com"/>
+      <button class="save-btn" onclick="saveApiUrl()">Save →</button>
+    </div>
+  </div>`;
+}
+
+function skelHTML(cat) {
+  let h=`<div class="cat-top"><div><div class="cat-title">${cat.icon} ${cat.label}</div><div class="cat-sub">${cat.sub}</div></div><button class="rfbtn" disabled>Loading…</button></div>`;
+  h += `<div class="skel-grid">`;
+  for(let i=0;i<6;i++) h+=`<div class="sk">
+    <div style="display:flex;gap:7px;margin-bottom:9px">
+      <div class="sh" style="height:15px;width:55px;border-radius:4px"></div>
+      <div class="sh" style="height:15px;width:70px;border-radius:4px"></div>
+      <div class="sh" style="height:15px;width:40px;border-radius:4px;margin-left:auto"></div>
+    </div>
+    <div class="sh" style="height:16px;width:90%;margin-bottom:7px"></div>
+    <div class="sh" style="height:16px;width:72%;margin-bottom:10px"></div>
+    <div class="sh" style="height:12px;width:95%;margin-bottom:5px"></div>
+    <div class="sh" style="height:12px;width:78%"></div>
+  </div>`;
+  h += `</div>`;
+  return h;
+}
+
+function refresh(id) { delete cache[id]; loadCat(id); }
 
 function parseDate(dateStr) {
   if (!dateStr) return new Date();
@@ -910,140 +957,20 @@ function timeAgo(s) {
   return Math.floor(diff / 86400) + "d ago";
 }
 
-function escapeHtml(str) {
-  if (!str) return '';
-  return str
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;")
-    .replace(/'/g, "&#039;");
+function clean(str, n) {
+  if (!str) return "";
+  str = str.replace(/<[^>]+>/g,"").trim();
+  return str.length > n ? str.slice(0,n)+"…" : str;
 }
 
-async function fetchQuery(q, category) {
-  // NewsData.io — India, English
-  const url = `https://newsdata.io/api/1/news?apikey=${apiKey}&q=${encodeURIComponent(q)}&language=en&country=in&category=${category}`;
-  const r   = await fetch(url);
-  if (!r.ok) throw new Error("HTTP " + r.status);
-  const d   = await r.json();
-  if (d.status === "error") throw new Error(d.message || "API error");
-  return d.results || [];
+function escapeHtml(s) {
+  if (!s) return "";
+  return s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
 }
 
-async function renderCat(id) {
-  const cat  = CATS[id];
-  const page = document.getElementById("page-" + id);
-  page.innerHTML = skelHTML(cat);
-
-  try {
-    const results = await fetchQuery(cat.q, cat.category);
-
-    let all = [];
-    results.forEach(a => {
-      const textToMatch = ((a.title || "") + " " + (a.description || "")).toLowerCase();
-      let assignedTag = cat.defaultTag;
-      for (const rule of cat.tagRules) {
-        if (textToMatch.includes(rule.term)) {
-          assignedTag = rule.tag;
-          break;
-        }
-      }
-      a._tag = assignedTag;
-      all.push(a);
-    });
-
-    // Deduplicate by title prefix
-    const seen = new Set();
-    all = all.filter(a => {
-      const k = (a.title||"").toLowerCase().slice(0, 55);
-      if (seen.has(k)) return false;
-      seen.add(k); return true;
-    });
-
-    // Sort by date descending
-    all.sort((a, b) => new Date(b.pubDate||0) - new Date(a.pubDate||0));
-    all = all.slice(0, 20);
-
-    if (!all.length) throw new Error("No recent articles found. Try refreshing.");
-
-    cache[id] = { items: all, ts: nowTS() };
-    page.dataset.loaded = "1";
-    renderCards(id);
-
-  } catch(e) {
-    page.innerHTML = `
-      ${catTopHTML(cat, true)}
-      <div class="status-bar status-err">⚠ ${e.message} <span style="opacity:0.6;font-size:10px">— tap Refresh</span></div>`;
-  }
-}
-
-async function refreshCat(id) {
-  delete cache[id];
-  const page = document.getElementById("page-" + id);
-  page.dataset.loaded = "";
-  await renderCat(id);
-}
-
-function renderCards(id) {
-  const cat  = CATS[id];
-  const hit  = cache[id];
-  const page = document.getElementById("page-" + id);
-  if (!hit) return;
-
-  let h = catTopHTML(cat, false, hit.ts, hit.items.length);
-
-  h += `<div class="news-grid">`;
-  hit.items.forEach(a => {
-    const src  = a.source_id ? a.source_id.toUpperCase().replace(/_/g, " ") : "";
-    const rawDesc = (a.description || "").replace(/<[^>]+>/g, "").trim();
-    const desc = rawDesc ? (rawDesc.length > 220 ? rawDesc.slice(0, 220) + "…" : rawDesc) : "No short summary is available for this story. Select 'Read Full Article' to view the publication directly.";
-    
-    h += `<div class="card">
-      <a href="${a.link || "#"}" target="_blank" class="card-title-link">
-        <div class="card-title">${escapeHtml(a.title || "Untitled")}</div>
-      </a>
-      <div class="card-desc">${escapeHtml(desc)}</div>
-      <div class="card-meta">
-        <span class="card-tag" style="background:${cat.dim};color:${cat.color}">${escapeHtml(a._tag)}</span>
-        <span class="card-time">${timeAgo(a.pubDate)}</span>
-        <a href="${a.link || "#"}" target="_blank" class="card-link">
-          Read full article ${src ? `on ${src}` : ""} →
-        </a>
-      </div>
-    </div>`;
-  });
-  h += `</div>`;
-
-  page.innerHTML = h;
-}
-
-function catTopHTML(cat, isErr, ts, count) {
-  const tsStr = ts ? `<span style="font-family:monospace;font-size:10px">${ts}</span>` : "";
-  const bar   = !isErr && ts
-    ? `<div class="status-bar status-ok"><span>✓ ${count} stories from last 48h</span>${tsStr}</div>`
-    : "";
-  return `<div class="cat-top">
-    <div>
-      <div class="cat-title">${cat.icon} ${cat.label}</div>
-      <div class="cat-sub">${cat.sub}</div>
-    </div>
-    <button class="load-btn refresh" onclick="refreshCat('${Object.keys(CATS).find(k=>CATS[k]===cat)}')">↻ Refresh</button>
-  </div>${bar}`;
-}
-
-function skelHTML(cat) {
-  let h = `<div class="cat-top"><div><div class="cat-title">${cat.icon} ${cat.label}</div><div class="cat-sub">${cat.sub}</div></div><button class="load-btn" disabled>Loading…</button></div>`;
-  h += `<div class="skel-grid">`;
-  for(let i=0;i<6;i++) h+=`<div class="sk"><div class="sh" style="height:13px;width:82%;margin-bottom:7px"></div><div class="sh" style="height:13px;width:58%;margin-bottom:10px"></div><div style="display:flex;gap:7px"><div class="sh" style="height:16px;width:65px;border-radius:4px"></div><div class="sh" style="height:16px;width:80px;border-radius:4px"></div><div class="sh" style="height:16px;width:44px;border-radius:4px"></div></div></div>`;
-  h += `</div>`;
-  return h;
-}
-
-function formatTS(date) {
+function nowTS() {
   const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-  const d = new Date(date);
-  if (isNaN(d.getTime())) return "";
-  
+  const d = new Date();
   let hours = d.getHours();
   const minutes = d.getMinutes().toString().padStart(2, '0');
   const ampm = hours >= 12 ? 'pm' : 'am';
@@ -1056,9 +983,15 @@ function formatTS(date) {
   return `${hours}:${minutes} ${ampm} · ${day} ${month}`;
 }
 
-function nowTS() {
-  return formatTS(new Date());
+function updateHeaderDate() {
+  const d = new Date();
+  const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+  document.getElementById("hdr-date").textContent = d.toLocaleDateString("en-US", options);
 }
+
+// Init
+updateHeaderDate();
+go("all");
 </script>
 </body>
 </html>
